@@ -1,12 +1,18 @@
 {
-  "name": "tech-icons-collection",
+  "name": "tech-icons",
   "version": "1.0.0",
   "description": "A comprehensive collection of SVG icons for various software technologies and frameworks",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node src/scripts/generate-preview.js",
+    "build": "npm run optimize && npm run format && npm run start",
+    "dev": "nodemon --watch src --ext js,svg --exec npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "optimize": "svgo -f . -r --multipass",
-    "format": "prettier --write \"**/*.{js,json,md,svg}\""
+    "optimize": "svgo -f src/icons -r --multipass",
+    "format": "prettier --write \"**/*.{js,json,md,html,svg}\"",
+    "lint": "prettier --check \"**/*.{js,json,md,html,svg}\"",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -18,16 +24,37 @@
     "tech",
     "technology",
     "framework",
-    "programming"
+    "programming",
+    "developer-tools"
   ],
-  "author": "Your Name",
+  "author": "Your Name <your.email@example.com> (https://yourwebsite.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yourusername/tech-icons/issues"
   },
   "homepage": "https://github.com/yourusername/tech-icons#readme",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "devDependencies": {
-    "prettier": "^2.8.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8",
     "svgo": "^3.0.2"
+  },
+  "lint-staged": {
+    "**/*.{js,json,md,html,svg}": [
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "useTabs": false,
+    "printWidth": 100,
+    "trailingComma": "es5"
   }
 }

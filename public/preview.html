@@ -1,56 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive collection of high-quality SVG icons for various software technologies and frameworks">
     <title>Tech Icons Collection - Preview</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <meta name="theme-color" content="#2563eb">
     <style>
         :root {
+            /* Light theme */
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #e1e4e8;
+            --text-color: #1f2937;
+            --border-color: #e5e7eb;
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --card-hover: #f3f4f6;
+            
+            /* Dark theme overrides */
+            [data-theme="dark"] {
+                --bg-color: #111827;
+                --card-bg: #1f2937;
+                --text-color: #f3f4f6;
+                --border-color: #374151;
+                --card-hover: #374151;
+                --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+            
+            /* Smooth theme transition */
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--bg-color);
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            min-height: 100vh;
+        }
+        
+        @supports (font-variation-settings: normal) {
+            body { font-family: 'Inter var', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1440px;
             margin: 0 auto;
+            padding: 1rem;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-bottom: 2rem;
+        }
+        
+        .header-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-subtitle {
+            margin: 0.5rem 0 0;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 1rem;
         }
         
         header {
-            text-align: center;
-            margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid var(--border-color);
         }
         
-        h1 {
+        h1, h2, h3, h4, h5, h6 {
             margin: 0 0 0.5rem;
-            color: #24292e;
+            color: var(--text-color);
         }
         
         .search-container {
-            margin: 1rem 0 2rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 1.25rem;
+            position: relative;
         }
         
-        #search {
-            padding: 0.5rem 1rem;
+        .search-input {
+            padding: 0.85rem 1.25rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
             width: 100%;
-            max-width: 400px;
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            color: var(--text-color);
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-color);
+            opacity: 0.6;
+        }
+        
+        .filter-options {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn:hover {
+            background: var(--card-hover);
+            border-color: var(--border-color);
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .filter-btn .count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
         }
         
         .icons-grid {
@@ -63,20 +184,39 @@
         .icon-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: inherit;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .icon-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .icon-card:hover::before {
+            transform: scaleX(1);
         }
         
         .icon-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary-color);
         }
         
         .icon {
@@ -96,25 +236,132 @@
         .icon-name {
             font-size: 0.9rem;
             font-weight: 500;
-            margin: 0.5rem 0 0.25rem;
+            color: var(--text-color);
             word-break: break-word;
+            margin-top: auto;
+            transition: color 0.2s ease;
         }
         
-        .icon-filename {
-            font-size: 0.75rem;
-            color: #6a737d;
-            font-family: monospace;
-            word-break: break-all;
+        .icon-card:hover .icon-name {
+            color: var(--primary-color);
         }
         
-        footer {
+        .footer {
             text-align: center;
-            margin-top: 3rem;
-            padding: 2rem 0;
+            margin-top: 4rem;
+            padding: 2.5rem 0;
             border-top: 1px solid var(--border-color);
-            color: #6a737d;
-            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 0.95rem;
         }
+        
+        .footer-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .footer-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        
+        .footer-links span {
+            opacity: 0.5;
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--card-bg);
+        }
+        
+        .theme-toggle:hover {
+            background: var(--card-hover);
+            transform: rotate(15deg);
+        }
+        
+        .theme-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.75rem;
+            }
+            
+            .search-container {
+                padding: 1.25rem 1rem;
+            }
+            
+            .filter-options {
+                gap: 0.5rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+                margin-left: -0.5rem;
+                margin-right: -0.5rem;
+                padding-left: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            
+            .icons-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 0.75rem;
+            }
+            
+            .icon-card {
+                padding: 1rem 0.5rem;
+            }
+            
+            .icon-card img {
+                width: 48px;
+                height: 48px;
+            }
+        }
+        
+        /* Animation for icon loading */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .icon-card {
+            animation: fadeIn 0.3s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .icon-card:nth-child(1) { animation-delay: 0.05s; }
+        .icon-card:nth-child(2) { animation-delay: 0.1s; }
+        .icon-card:nth-child(3) { animation-delay: 0.15s; }
+        .icon-card:nth-child(4) { animation-delay: 0.2s; }
+        .icon-card:nth-child(5) { animation-delay: 0.25s; }
+        .icon-card:nth-child(n+6) { animation-delay: 0.3s; }
         
         @media (prefers-color-scheme: dark) {
             :root {
@@ -141,22 +388,79 @@
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <div>
+                <h1 class="header-title">Tech Icons Collection</h1>
+                <p class="header-subtitle">High-quality SVG icons for your projects</p>
+            </div>
+            <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </div>
+    </header>
+    
     <div class="container">
-        <header>
-            <h1>Tech Icons Collection</h1>
-            <p>High-quality SVG icons for your projects</p>
-        </header>
-        
         <div class="search-container">
-            <input type="text" id="search" placeholder="Search icons..." autofocus>
+            <input 
+                type="text" 
+                id="search" 
+                class="search-input" 
+                placeholder="Search icons..." 
+                aria-label="Search icons"
+                autofocus
+            >
+            <div class="filter-options">
+                <button class="filter-btn active" data-category="all">
+                    <span>All</span>
+                    <span class="count" id="count-all">0</span>
+                </button>
+                <button class="filter-btn" data-category="frameworks">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="3" y1="9" x2="21" y2="9"></line>
+                        <line x1="9" y1="21" x2="9" y2="9"></line>
+                    </svg>
+                    <span>Frameworks</span>
+                    <span class="count" id="count-frameworks">0</span>
+                </button>
+                <button class="filter-btn" data-category="languages">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
+                    </svg>
+                    <span>Languages</span>
+                    <span class="count" id="count-languages">0</span>
+                </button>
+                <button class="filter-btn" data-category="tools">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                    </svg>
+                    <span>Tools</span>
+                    <span class="count" id="count-tools">0</span>
+                </button>
+                <button class="filter-btn" data-category="platforms">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                    <span>Platforms</span>
+                    <span class="count" id="count-platforms">0</span>
+                </button>
+            </div>
         </div>
         
         <div class="icons-grid" id="icons-container">
-            <!-- Icons will be inserted here by JavaScript -->
+            <!-- Icons will be dynamically inserted here -->
         </div>
         
-        <footer>
-            <p>© 2025 Tech Icons Collection | <a href="https://github.com/yourusername/tech-icons" style="color: #58a6ff; text-decoration: none;">GitHub</a></p>
+        <footer class="footer">
+            <p> 2025 Tech Icons Collection. All icons are property of their respective owners.</p>
+            <p class="footer-links">
+                <a href="https://github.com/yourusername/tech-icons" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <span>•</span>
+                <a href="#" id="back-to-top">Back to top</a>
+            </p>
         </footer>
     </div>
 
@@ -1863,57 +2167,296 @@
 
         // Sort icons alphabetically
         icons.sort((a, b) => a.name.localeCompare(b.name));
+        
+        // Update icon count
+        document.getElementById('icon-count').textContent = icons.length;
 
         const container = document.getElementById('icons-container');
         const searchInput = document.getElementById('search');
         
-        // Function to display icons
+        // Function to display icons with loading state
         function displayIcons(iconsToShow) {
-            container.innerHTML = '';
+            // Update icon count
+            document.getElementById('icon-count').textContent = iconsToShow.length;
             
-            iconsToShow.forEach(icon => {
-                const card = document.createElement('a');
-                card.href = `#`;
-                card.className = 'icon-card';
-                card.download = icon.filename;
-                card.title = `Download ${icon.name}`;
+            // Show loading state
+            container.innerHTML = `
+                <div class="loading-container">
+                    <div class="loading-spinner"></div>
+                    <p>Loading icons...</p>
+                </div>
+            `;
+            
+            // Use requestAnimationFrame to ensure smooth rendering
+            requestAnimationFrame(() => {
+                container.innerHTML = '';
                 
-                card.innerHTML = `
-                    <div class="icon">
-                        <img src="${icon.filename}" alt="${icon.name}">
-                    </div>
-                    <div class="icon-name">${icon.name}</div>
-                    <div class="icon-filename">${icon.filename}</div>
-                `;
+                if (iconsToShow.length === 0) {
+                    container.innerHTML = `
+                        <div class="no-results">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                            <h3>No icons found</h3>
+                            <p>Try adjusting your search or filter criteria</p>
+                        </div>
+                    `;
+                    return;
+                }
                 
-                // Add click handler to download the icon
-                card.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const link = document.createElement('a');
-                    link.href = icon.filename;
-                    link.download = icon.filename;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                });
+                // Process icons in chunks for better performance
+                const chunkSize = 20;
+                const chunks = [];
+                for (let i = 0; i < iconsToShow.length; i += chunkSize) {
+                    chunks.push(iconsToShow.slice(i, i + chunkSize));
+                }
                 
-                container.appendChild(card);
+                let currentChunk = 0;
+                
+                function processChunk() {
+                    const chunk = chunks[currentChunk];
+                    if (!chunk) return;
+                    
+                    const fragment = document.createDocumentFragment();
+                    
+                    chunk.forEach(icon => {
+                        const card = document.createElement('div');
+                        card.className = 'icon-card';
+                        card.setAttribute('data-name', icon.name.toLowerCase());
+                        card.setAttribute('data-filename', icon.filename.toLowerCase());
+                        
+                        // Create image with loading="lazy" for better performance
+                        const img = document.createElement('img');
+                        img.loading = 'lazy';
+                        img.src = icon.filename;
+                        img.alt = `${icon.name} icon`;
+                        img.className = 'icon';
+                        
+                        // Show placeholder while loading
+                        img.onload = () => {
+                            img.style.opacity = '1';
+                        };
+                        
+                        const name = document.createElement('div');
+                        name.className = 'icon-name';
+                        name.textContent = icon.name;
+                        
+                        // Add a subtle badge for the category
+                        const category = icon.filename.split('/')[2]; // Get category from path
+                        if (category) {
+                            const categoryBadge = document.createElement('span');
+                            categoryBadge.className = 'category-badge';
+                            categoryBadge.textContent = category;
+                            categoryBadge.style.backgroundColor = getCategoryColor(category);
+                            card.appendChild(categoryBadge);
+                        }
+                        
+                        card.appendChild(img);
+                        card.appendChild(name);
+                        
+                        // Add click to copy functionality
+                        card.addEventListener('click', () => {
+                            const filename = icon.filename.split('/').pop();
+                            copyToClipboard(filename, name);
+                        });
+                        
+                        // Add keyboard navigation
+                        card.setAttribute('tabindex', '0');
+                        card.addEventListener('keydown', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                const filename = icon.filename.split('/').pop();
+                                copyToClipboard(filename, name);
+                            }
+                        });
+                        
+                        fragment.appendChild(card);
+                    });
+                    
+                    container.appendChild(fragment);
+                    currentChunk++;
+                    
+                    // Process next chunk on next animation frame
+                    if (currentChunk < chunks.length) {
+                        requestAnimationFrame(processChunk);
+                    }
+                }
+                
+                // Start processing chunks
+                processChunk();
             });
+        }
+        
+        // Helper function to copy text to clipboard
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = element.textContent;
+                const originalColor = element.style.color;
+                
+                element.textContent = 'Copied!';
+                element.style.color = '#10b981'; // Green color for success
+                
+                // Add checkmark icon
+                const checkmark = document.createElement('span');
+                checkmark.innerHTML = ' ✓';
+                element.appendChild(checkmark);
+                
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.color = originalColor;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                const originalText = element.textContent;
+                element.textContent = 'Failed to copy';
+                element.style.color = '#ef4444'; // Red color for error
+                
+                setTimeout(() => {
+                    element.textContent = originalText;
+                    element.style.color = '';
+                }, 2000);
+            });
+        }
+        
+        // Helper function to get category color
+        function getCategoryColor(category) {
+            const colors = {
+                frameworks: 'rgba(99, 102, 241, 0.1)',  // indigo
+                languages: 'rgba(236, 72, 153, 0.1)',  // pink
+                tools: 'rgba(234, 179, 8, 0.1)',       // yellow
+                platforms: 'rgba(16, 185, 129, 0.1)'   // emerald
+            };
+            return colors[category] || 'rgba(156, 163, 175, 0.1)'; // gray as fallback
         }
         
         // Initial display of all icons
         displayIcons(icons);
         
-        // Search functionality
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredIcons = icons.filter(icon => 
-                icon.name.toLowerCase().includes(searchTerm) || 
-                icon.filename.toLowerCase().includes(searchTerm)
-            );
+        // Search and filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        let activeCategory = 'all';
+        
+        function filterIcons() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            return icons.filter(icon => {
+                const matchesSearch = searchTerm === '' || 
+                    icon.name.toLowerCase().includes(searchTerm) ||
+                    icon.filename.toLowerCase().includes(searchTerm);
+                
+                if (activeCategory === 'all') return matchesSearch;
+                
+                // Check if the icon is in the active category directory
+                return matchesSearch && icon.filename.includes(`/icons/${activeCategory}/`);
+            });
+        }
+        
+        function updateDisplay() {
+            const filteredIcons = filterIcons();
             displayIcons(filteredIcons);
+            
+            // Update active filter count
+            const activeFilterCount = document.getElementById(`count-${activeCategory}`);
+            if (activeFilterCount) {
+                activeFilterCount.textContent = filteredIcons.length;
+            }
+            
+            // Update URL with search and filter state
+            const url = new URL(window.location);
+            if (searchInput.value) {
+                url.searchParams.set('q', searchInput.value);
+            } else {
+                url.searchParams.delete('q');
+            }
+            
+            if (activeCategory !== 'all') {
+                url.searchParams.set('category', activeCategory);
+            } else {
+                url.searchParams.delete('category');
+            }
+            
+            window.history.replaceState({}, '', url.toString());
+        }
+        
+        // Handle search input with debounce
+        let searchTimeout;
+        searchInput.addEventListener('input', () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(updateDisplay, 300);
         });
         
+        // Handle filter button clicks
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                activeCategory = button.dataset.category;
+                updateDisplay();
+            });
+        });
+        
+        // Initialize with URL parameters
+        function initFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const searchQuery = params.get('q');
+            const category = params.get('category');
+            
+            if (searchQuery) {
+                searchInput.value = searchQuery;
+            }
+            
+            if (category) {
+                activeCategory = category;
+                const categoryButton = document.querySelector(`.filter-btn[data-category="${category}"]`);
+                if (categoryButton) {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    categoryButton.classList.add('active');
+                }
+            }
+            
+            updateDisplay();
+        }
+        
+        // Initialize with all icons
+        initFromUrl();
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use OS preference
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Back to top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'inline';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         // Add keyboard shortcut to focus search (Cmd+K or Ctrl+K)
         document.addEventListener('keydown', (e) => {
             if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
