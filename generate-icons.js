@@ -16,6 +16,11 @@ if (!fs.existsSync(CONFIG.outputDir)) {
 // Get all SVG files from the source directory
 function getSvgFiles(dir) {
     try {
+        if (!fs.existsSync(dir)) {
+            console.error(`Source directory does not exist: ${dir}`);
+            return [];
+        }
+        
         const files = fs.readdirSync(dir);
         return files
             .filter(file => file.toLowerCase().endsWith('.svg'))
@@ -280,7 +285,7 @@ function generatePreview(icons) {
             ${icons.map(icon => `
                 <div class="icon-card" data-name="${icon.displayName.toLowerCase()}" data-filename="${icon.originalName}">
                     <div class="icon-container">
-                        <img src="${icon.filename}" alt="${icon.displayName}" class="icon" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2RjZWRmMiIgZD0iTTEyLDJBMTAsMTAgMCAwLDAgMiwxMkEyLDIgMCAwLDAgNCwxNEg2VjExSDRBMzksMzkgMCAwLDEgMTIsNUE3LDcgMCAwLDEgMTksMTJIMTdWx0SDE5QTIsMiAwIDAsMCAyMSwxMkExMCwxMCAwIDAsMCAxMiwyWk0xMyw3VjEzSDE3VjExSDE1VjlaIi8+PC9zdmc+'">
+                        <img src="${icon.filename}" alt="${icon.displayName}" class="icon" loading="lazy" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2RjZGNkYyIgZD0iTTEyIDJBMTAgMTAgMCAwIDAgMiAxMkExMCAxMCAwIDAgMCAxMiAyMkExMCAxMCAwIDAgMCAyMiAxMkExMCAxMCAwIDAgMCAxMiAyTTE3IDE4SDEzVjE0SDExVjE4SDdWMTBIMTdWMThNMTUgMTZIMTNWMTJIMTVWMTZNMTEgMTZIOVYxMkgxMVYxNloiLz48L3N2Zz4='">
                     </div>
                     <div class="icon-name">${icon.displayName}</div>
                     <div class="icon-filename">${icon.originalName}</div>
@@ -299,25 +304,37 @@ function generatePreview(icons) {
         const searchInput = document.getElementById('search');
         const iconCount = document.getElementById('icon-count');
         
+        // Store the original HTML for restoring after search
+        const originalHTML = container.innerHTML;
+        
         // Function to filter icons based on search term
         function filterIcons(searchTerm) {
             const term = searchTerm.toLowerCase().trim();
+            
+            if (!term) {
+                // If search is empty, restore original HTML
+                container.innerHTML = originalHTML;
+                iconCount.textContent = \`\${icons.length} \${icons.length === 1 ? 'icon' : 'icons'}\`;
+                return;
+            }
+            
             const cards = container.querySelectorAll('.icon-card');
             let visibleCount = 0;
             
             cards.forEach(card => {
                 const name = card.getAttribute('data-name');
-                const isVisible = name.includes(term);
+                const filename = card.getAttribute('data-filename').toLowerCase();
+                const isVisible = name.includes(term) || filename.includes(term);
                 card.style.display = isVisible ? 'flex' : 'none';
                 if (isVisible) visibleCount++;
             });
             
             // Update the icon count
-            iconCount.textContent = `${visibleCount} ${visibleCount === 1 ? 'icon' : 'icons'}`;
+            iconCount.textContent = \`\${visibleCount} \${visibleCount === 1 ? 'icon' : 'icons'}\`;
             
             // Show no results message if no icons match
             if (visibleCount === 0) {
-                container.innerHTML = `
+                container.innerHTML = \`
                     <div class="no-results">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
@@ -328,7 +345,7 @@ function generatePreview(icons) {
                         <h3>No icons found</h3>
                         <p>Try adjusting your search or check back later for more icons.</p>
                     </div>
-                `;
+                \`;
             }
         }
         
@@ -340,19 +357,43 @@ function generatePreview(icons) {
         // Add click handler to copy icon filename
         document.addEventListener('click', (e) => {
             const card = e.target.closest('.icon-card');
-            if (card) {
+            if (card && !card.classList.contains('no-results')) {
                 const filename = card.getAttribute('data-filename');
-                navigator.clipboard.writeText(filename).then(() => {
-                    const originalText = card.querySelector('.icon-name').textContent;
-                    const iconName = card.querySelector('.icon-name');
-                    iconName.textContent = 'Copied!';
-                    iconName.style.color = '#4CAF50';
-                    
-                    setTimeout(() => {
-                        iconName.textContent = originalText;
-                        iconName.style.color = '';
-                    }, 2000);
-                });
+                if (filename && navigator.clipboard) {
+                    navigator.clipboard.writeText(filename).then(() => {
+                        const originalText = card.querySelector('.icon-name').textContent;
+                        const iconName = card.querySelector('.icon-name');
+                        iconName.textContent = 'Copied!';
+                        iconName.style.color = '#4CAF50';
+                        
+                        setTimeout(() => {
+                            iconName.textContent = originalText;
+                            iconName.style.color = '';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy filename:', err);
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea');
+                        textArea.value = filename;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            const originalText = card.querySelector('.icon-name').textContent;
+                            const iconName = card.querySelector('.icon-name');
+                            iconName.textContent = 'Copied!';
+                            iconName.style.color = '#4CAF50';
+                            
+                            setTimeout(() => {
+                                iconName.textContent = originalText;
+                                iconName.style.color = '';
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Fallback copy failed:', err);
+                        }
+                        document.body.removeChild(textArea);
+                    });
+                }
             }
         });
     </script>
@@ -366,14 +407,19 @@ function generatePreview(icons) {
 function generateIconPreview() {
     try {
         console.log('Generating icon preview...');
+        console.log(`Looking for icons in: ${CONFIG.sourceDir}`);
         
         // Get all SVG files
         const svgFiles = getSvgFiles(CONFIG.sourceDir);
         
         if (svgFiles.length === 0) {
             console.error('No SVG files found in the icons directory');
+            console.log('Please ensure you have SVG files in the following directory:');
+            console.log(CONFIG.sourceDir);
             return;
         }
+        
+        console.log(`Found ${svgFiles.length} SVG files`);
         
         // Process icons
         const icons = svgFiles.map(file => ({
@@ -391,9 +437,12 @@ function generateIconPreview() {
         // Write to file
         fs.writeFileSync(CONFIG.previewFile, html, 'utf8');
         
-        console.log(`Successfully generated preview with ${icons.length} icons at ${CONFIG.previewFile}`);
+        console.log(`✅ Successfully generated preview with ${icons.length} icons`);
+        console.log(`📁 Preview file: ${CONFIG.previewFile}`);
+        console.log(`🌐 Open the preview in your browser to view the icons`);
     } catch (error) {
-        console.error('Error generating icon preview:', error);
+        console.error('❌ Error generating icon preview:', error);
+        process.exit(1);
     }
 }
 
