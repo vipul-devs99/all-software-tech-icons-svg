@@ -1,0 +1,13 @@
+# These are supported funding model platforms
+
+github: yourusername  # Replace with your GitHub Sponsors username
+twitter: yourtwitter   # Replace with your Twitter username
+patreon: yourpatreon  # Replace with your Patreon username
+open_collective: yourorg  # Replace with your Open Collective organization name
+ko_fi: yourkofi      # Replace with your Ko-fi username
+tidelift: platform   # Replace with 'platform' or 'n/a'
+community_bridge: yourproject  # Replace with your Community Bridge project name
+liberapay: yourliberapay  # Replace with your Liberapay username
+issuehunt: yourissuehunt  # Replace with your IssueHunt username
+otechie: yourotechie  # Replace with your Otechie username
+custom: ['https://your-custom-donation-link.com', 'https://another-custom-link.org']  # Replace with your custom URLs

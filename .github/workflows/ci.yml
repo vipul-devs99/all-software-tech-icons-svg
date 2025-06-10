@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Lint files
+      run: npx prettier --check .
+    
+    - name: Build
+      run: node generate-preview.js
+      
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: test
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: node generate-preview.js
+    
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: .
+        branch: gh-pages
+        clean: true
+        clean-exclude: |
+          .github
+          .gitignore
+          README.md
+          CONTRIBUTING.md
+          LICENSE
+          CHANGELOG.md
+          SECURITY.md
+          CODE_OF_CONDUCT.md
+          package.json
+          package-lock.json
+          node_modules

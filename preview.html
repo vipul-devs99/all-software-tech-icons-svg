@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Icons Collection - Preview</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #e1e4e8;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        h1 {
+            margin: 0 0 0.5rem;
+            color: #24292e;
+        }
+        
+        .search-container {
+            margin: 1rem 0 2rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #search {
+            padding: 0.5rem 1rem;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .icons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .icon-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .icon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .icon img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .icon-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0.5rem 0 0.25rem;
+            word-break: break-word;
+        }
+        
+        .icon-filename {
+            font-size: 0.75rem;
+            color: #6a737d;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border-color);
+            color: #6a737d;
+            font-size: 0.9rem;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0d1117;
+                --card-bg: #161b22;
+                --text-color: #c9d1d9;
+                --border-color: #30363d;
+            }
+            
+            h1 {
+                color: #f0f6fc;
+            }
+            
+            #search {
+                background-color: #0d1117;
+                border-color: #30363d;
+                color: #c9d1d9;
+            }
+            
+            .icon-filename {
+                color: #8b949e;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tech Icons Collection</h1>
+            <p>High-quality SVG icons for your projects</p>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search icons..." autofocus>
+        </div>
+        
+        <div class="icons-grid" id="icons-container">
+            <!-- Icons will be inserted here by JavaScript -->
+        </div>
+        
+        <footer>
+            <p>© 2025 Tech Icons Collection | <a href="https://github.com/yourusername/tech-icons" style="color: #58a6ff; text-decoration: none;">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Get all SVG files
+        const icons = [
+    {
+        name: ".net Core",
+        filename: ".NET-core.svg"
+    },
+    {
+        name: ".net",
+        filename: ".NET.svg"
+    },
+    {
+        name: "Aarch64",
+        filename: "AArch64.svg"
+    },
+    {
+        name: "Adobe Commerce (magneto)",
+        filename: "Adobe-Commerce-(Magneto).svg"
+    },
+    {
+        name: "Adobe Illustrator",
+        filename: "Adobe-Illustrator.svg"
+    },
+    {
+        name: "Adobe Photoshop",
+        filename: "Adobe-Photoshop.svg"
+    },
+    {
+        name: "Adobe Premiere Pro",
+        filename: "Adobe-Premiere-Pro.svg"
+    },
+    {
+        name: "Adobe Xd",
+        filename: "Adobe-XD.svg"
+    },
+    {
+        name: "Adonisjs",
+        filename: "AdonisJS.svg"
+    },
+    {
+        name: "After Effects",
+        filename: "After-Effects.svg"
+    },
+    {
+        name: "Akka",
+        filename: "Akka.svg"
+    },
+    {
+        name: "Algolia",
+        filename: "Algolia.svg"
+    },
+    {
+        name: "Alpine.js",
+        filename: "Alpine.js.svg"
+    },
+    {
+        name: "Anaconda",
+        filename: "Anaconda.svg"
+    },
+    {
+        name: "Android Studio",
+        filename: "Android-Studio.svg"
+    },
+    {
+        name: "Android",
+        filename: "Android.svg"
+    },
+    {
+        name: "Angular",
+        filename: "Angular.svg"
+    },
+    {
+        name: "Angularjs",
+        filename: "AngularJS.svg"
+    },
+    {
+        name: "Ansible",
+        filename: "Ansible.svg"
+    },
+    {
+        name: "Ant Design",
+        filename: "Ant-Design.svg"
+    },
+    {
+        name: "Apache Airflow",
+        filename: "Apache-Airflow.svg"
+    },
+    {
+        name: "Apache Cassandra",
+        filename: "Apache-Cassandra.svg"
+    },
+    {
+        name: "Apache Groovy",
+        filename: "Apache-Groovy.svg"
+    },
+    {
+        name: "Apache Hadoop",
+        filename: "Apache-Hadoop.svg"
+    },
+    {
+        name: "Apache Kafka",
+        filename: "Apache-Kafka.svg"
+    },
+    {
+        name: "Apache Maven",
+        filename: "Apache-Maven.svg"
+    },
+    {
+        name: "Apache Spark",
+        filename: "Apache-Spark.svg"
+    },
+    {
+        name: "Apache Subversion",
+        filename: "Apache-Subversion.svg"
+    },
+    {
+        name: "Apache Tomcat",
+        filename: "Apache-Tomcat.svg"
+    },
+    {
+        name: "Apache",
+        filename: "Apache.svg"
+    },
+    {
+        name: "Apl",
+        filename: "APL.svg"
+    },
+    {
+        name: "Appcelerator",
+        filename: "Appcelerator.svg"
+    },
+    {
+        name: "Apple Safari",
+        filename: "Apple-Safari.svg"
+    },
+    {
+        name: "Apple",
+        filename: "Apple.svg"
+    },
+    {
+        name: "Appwrite",
+        filename: "Appwrite.svg"
+    },
+    {
+        name: "Arch Linux",
+        filename: "Arch-Linux.svg"
+    },
+    {
+        name: "Arduino",
+        filename: "Arduino.svg"
+    },
+    {
+        name: "Argo Cd",
+        filename: "Argo-CD.svg"
+    },
+    {
+        name: "Astro",
+        filename: "Astro.svg"
+    },
+    {
+        name: "Atom",
+        filename: "Atom.svg"
+    },
+    {
+        name: "Autodesk Maya",
+        filename: "Autodesk-Maya.svg"
+    },
+    {
+        name: "Autodesk Shotgrid",
+        filename: "Autodesk-ShotGrid.svg"
+    },
+    {
+        name: "Awk",
+        filename: "Awk.svg"
+    },
+    {
+        name: "Aws",
+        filename: "AWS.svg"
+    },
+    {
+        name: "Azios",
+        filename: "Azios.svg"
+    },
+    {
+        name: "Azure Devops",
+        filename: "Azure-Devops.svg"
+    },
+    {
+        name: "Azure Sql Database",
+        filename: "Azure-SQL-Database.svg"
+    },
+    {
+        name: "Azure",
+        filename: "Azure.svg"
+    },
+    {
+        name: "Babel",
+        filename: "Babel.svg"
+    },
+    {
+        name: "Backbone.js",
+        filename: "Backbone.js.svg"
+    },
+    {
+        name: "Ballerina",
+        filename: "Ballerina.svg"
+    },
+    {
+        name: "Bamboo",
+        filename: "Bamboo.svg"
+    },
+    {
+        name: "Bash",
+        filename: "Bash.svg"
+    },
+    {
+        name: "Behance",
+        filename: "Behance.svg"
+    },
+    {
+        name: "Bitbucket",
+        filename: "BitBucket.svg"
+    },
+    {
+        name: "Blender",
+        filename: "Blender.svg"
+    },
+    {
+        name: "Bootstrap",
+        filename: "Bootstrap.svg"
+    },
+    {
+        name: "Bower",
+        filename: "Bower.svg"
+    },
+    {
+        name: "Browserstack",
+        filename: "BrowserStack.svg"
+    },
+    {
+        name: "Bulma",
+        filename: "Bulma.svg"
+    },
+    {
+        name: "Bun",
+        filename: "Bun.svg"
+    },
+    {
+        name: "C# (c#)",
+        filename: "C#-(CSharp).svg"
+    },
+    {
+        name: "C++ (c++)",
+        filename: "C++-(CPlusPlus).svg"
+    },
+    {
+        name: "C",
+        filename: "C.svg"
+    },
+    {
+        name: "Cairo Graphics",
+        filename: "Cairo-Graphics.svg"
+    },
+    {
+        name: "Cakephp",
+        filename: "CakePHP.svg"
+    },
+    {
+        name: "Canva",
+        filename: "Canva.svg"
+    },
+    {
+        name: "Capacitor",
+        filename: "Capacitor.svg"
+    },
+    {
+        name: "Centos",
+        filename: "CentOS.svg"
+    },
+    {
+        name: "Chrome",
+        filename: "Chrome.svg"
+    },
+    {
+        name: "Circleci",
+        filename: "CircleCI.svg"
+    },
+    {
+        name: "Clarity",
+        filename: "Clarity.svg"
+    },
+    {
+        name: "Clion",
+        filename: "CLion.svg"
+    },
+    {
+        name: "Clojure",
+        filename: "Clojure.svg"
+    },
+    {
+        name: "Clojurescript",
+        filename: "ClojureScript.svg"
+    },
+    {
+        name: "Cloudflare Workers",
+        filename: "Cloudflare-Workers.svg"
+    },
+    {
+        name: "Cloudflare",
+        filename: "Cloudflare.svg"
+    },
+    {
+        name: "Cmake",
+        filename: "CMake.svg"
+    },
+    {
+        name: "Codeac",
+        filename: "Codeac.svg"
+    },
+    {
+        name: "Codecov",
+        filename: "Codecov.svg"
+    },
+    {
+        name: "Codeigniter",
+        filename: "CodeIgniter.svg"
+    },
+    {
+        name: "Codepen",
+        filename: "CodePen.svg"
+    },
+    {
+        name: "Coffeescript",
+        filename: "CoffeeScript.svg"
+    },
+    {
+        name: "Composer",
+        filename: "Composer.svg"
+    },
+    {
+        name: "Confluence",
+        filename: "Confluence.svg"
+    },
+    {
+        name: "Consul",
+        filename: "Consul.svg"
+    },
+    {
+        name: "Contao",
+        filename: "Contao.svg"
+    },
+    {
+        name: "Core Js",
+        filename: "Core-js.svg"
+    },
+    {
+        name: "Cosmos Bd",
+        filename: "Cosmos-BD.svg"
+    },
+    {
+        name: "Couchdb",
+        filename: "CouchDB.svg"
+    },
+    {
+        name: "Crystal",
+        filename: "Crystal.svg"
+    },
+    {
+        name: "Css3",
+        filename: "CSS3.svg"
+    },
+    {
+        name: "Cucumber",
+        filename: "Cucumber.svg"
+    },
+    {
+        name: "Cypress",
+        filename: "Cypress.svg"
+    },
+    {
+        name: "D3.js",
+        filename: "D3.js.svg"
+    },
+    {
+        name: "Dart",
+        filename: "Dart.svg"
+    },
+    {
+        name: "Datagrip",
+        filename: "DataGrip.svg"
+    },
+    {
+        name: "Dataspell",
+        filename: "DataSpell.svg"
+    },
+    {
+        name: "Dbeaver",
+        filename: "DBeaver.svg"
+    },
+    {
+        name: "Debian",
+        filename: "Debian.svg"
+    },
+    {
+        name: "Deno",
+        filename: "Deno.svg"
+    },
+    {
+        name: "Devicon",
+        filename: "Devicon.svg"
+    },
+    {
+        name: "Digital Ocean",
+        filename: "Digital-Ocean.svg"
+    },
+    {
+        name: "Discord.js",
+        filename: "Discord.js.svg"
+    },
+    {
+        name: "Django Rest",
+        filename: "Django-REST.svg"
+    },
+    {
+        name: "Django",
+        filename: "Django.svg"
+    },
+    {
+        name: "Docker",
+        filename: "Docker.svg"
+    },
+    {
+        name: "Doctrine",
+        filename: "Doctrine.svg"
+    },
+    {
+        name: "Dropwizard",
+        filename: "Dropwizard.svg"
+    },
+    {
+        name: "Drupal",
+        filename: "Drupal.svg"
+    },
+    {
+        name: "Eclipse Ceylon",
+        filename: "Eclipse-Ceylon.svg"
+    },
+    {
+        name: "Eclipse Ide",
+        filename: "Eclipse-IDE.svg"
+    },
+    {
+        name: "Eclipse Vert.x",
+        filename: "Eclipse-Vert.x.svg"
+    },
+    {
+        name: "Elastic Beats",
+        filename: "Elastic-Beats.svg"
+    },
+    {
+        name: "Elastic Search",
+        filename: "Elastic-Search.svg"
+    },
+    {
+        name: "Electron",
+        filename: "Electron.svg"
+    },
+    {
+        name: "Eleventy (11ty)",
+        filename: "Eleventy-(11ty).svg"
+    },
+    {
+        name: "Elixir",
+        filename: "Elixir.svg"
+    },
+    {
+        name: "Elm",
+        filename: "Elm.svg"
+    },
+    {
+        name: "Embedded C",
+        filename: "Embedded-C.svg"
+    },
+    {
+        name: "Ember.js",
+        filename: "Ember.js.svg"
+    },
+    {
+        name: "Envoy",
+        filename: "Envoy.svg"
+    },
+    {
+        name: "Erlang",
+        filename: "Erlang.svg"
+    },
+    {
+        name: "Eslint",
+        filename: "ESLint.svg"
+    },
+    {
+        name: "Express",
+        filename: "Express.svg"
+    },
+    {
+        name: "Facebook",
+        filename: "Facebook.svg"
+    },
+    {
+        name: "Fastapi",
+        filename: "FastAPI.svg"
+    },
+    {
+        name: "Fastify",
+        filename: "Fastify.svg"
+    },
+    {
+        name: "Fauna",
+        filename: "Fauna.svg"
+    },
+    {
+        name: "Feathers",
+        filename: "Feathers.svg"
+    },
+    {
+        name: "Fedora",
+        filename: "Fedora.svg"
+    },
+    {
+        name: "Figma",
+        filename: "Figma.svg"
+    },
+    {
+        name: "Filezilla",
+        filename: "FileZilla.svg"
+    },
+    {
+        name: "Firebase",
+        filename: "Firebase.svg"
+    },
+    {
+        name: "Firefox",
+        filename: "Firefox.svg"
+    },
+    {
+        name: "Flask",
+        filename: "Flask.svg"
+    },
+    {
+        name: "Flutter",
+        filename: "Flutter.svg"
+    },
+    {
+        name: "Fortran",
+        filename: "Fortran.svg"
+    },
+    {
+        name: "Foundation",
+        filename: "Foundation.svg"
+    },
+    {
+        name: "Fsharp (f#)",
+        filename: "FSharp-(F#).svg"
+    },
+    {
+        name: "Gatling",
+        filename: "Gatling.svg"
+    },
+    {
+        name: "Gatsby",
+        filename: "Gatsby.svg"
+    },
+    {
+        name: "Gazebo",
+        filename: "Gazebo.svg"
+    },
+    {
+        name: "Gcc",
+        filename: "GCC.svg"
+    },
+    {
+        name: "Gentoo",
+        filename: "Gentoo.svg"
+    },
+    {
+        name: "Ghost",
+        filename: "Ghost.svg"
+    },
+    {
+        name: "Gimp",
+        filename: "GIMP.svg"
+    },
+    {
+        name: "Git",
+        filename: "Git.svg"
+    },
+    {
+        name: "Gitbook",
+        filename: "GitBook.svg"
+    },
+    {
+        name: "Github Actions",
+        filename: "GitHub-Actions.svg"
+    },
+    {
+        name: "Github Codespaces",
+        filename: "GitHub-Codespaces.svg"
+    },
+    {
+        name: "Github",
+        filename: "GitHub.svg"
+    },
+    {
+        name: "Gitlab",
+        filename: "GitLab.svg"
+    },
+    {
+        name: "Gitpod",
+        filename: "Gitpod.svg"
+    },
+    {
+        name: "Gitter",
+        filename: "Gitter.svg"
+    },
+    {
+        name: "Gnu Emacs",
+        filename: "GNU-Emacs.svg"
+    },
+    {
+        name: "Go",
+        filename: "Go.svg"
+    },
+    {
+        name: "Godot Engine",
+        filename: "Godot-Engine.svg"
+    },
+    {
+        name: "Goland",
+        filename: "GoLand.svg"
+    },
+    {
+        name: "Google Cloud",
+        filename: "Google-Cloud.svg"
+    },
+    {
+        name: "Google",
+        filename: "Google.svg"
+    },
+    {
+        name: "Gradle",
+        filename: "Gradle.svg"
+    },
+    {
+        name: "Grafana",
+        filename: "Grafana.svg"
+    },
+    {
+        name: "Grails",
+        filename: "Grails.svg"
+    },
+    {
+        name: "Graphql",
+        filename: "GraphQL.svg"
+    },
+    {
+        name: "Grunt.js",
+        filename: "Grunt.js.svg"
+    },
+    {
+        name: "Gulp.js",
+        filename: "Gulp.js.svg"
+    },
+    {
+        name: "Handlebars",
+        filename: "Handlebars.svg"
+    },
+    {
+        name: "Hardhat",
+        filename: "Hardhat.svg"
+    },
+    {
+        name: "Harvester",
+        filename: "Harvester.svg"
+    },
+    {
+        name: "Hashicorp Terraform",
+        filename: "HashiCorp-Terraform.svg"
+    },
+    {
+        name: "Hashicorp Vagrant",
+        filename: "HashiCorp-Vagrant.svg"
+    },
+    {
+        name: "Hashicorp Vault",
+        filename: "HashiCorp-Vault.svg"
+    },
+    {
+        name: "Haskell",
+        filename: "Haskell.svg"
+    },
+    {
+        name: "Haxe",
+        filename: "Haxe.svg"
+    },
+    {
+        name: "Helm",
+        filename: "Helm.svg"
+    },
+    {
+        name: "Heroku",
+        filename: "Heroku.svg"
+    },
+    {
+        name: "Hibernate",
+        filename: "Hibernate.svg"
+    },
+    {
+        name: "Homebrew",
+        filename: "Homebrew.svg"
+    },
+    {
+        name: "Html5",
+        filename: "HTML5.svg"
+    },
+    {
+        name: "Hugo",
+        filename: "Hugo.svg"
+    },
+    {
+        name: "Ibm Spss Statistics",
+        filename: "IBM-SPSS-Statistics.svg"
+    },
+    {
+        name: "Ifttt",
+        filename: "IFTTT.svg"
+    },
+    {
+        name: "Influxdb",
+        filename: "InfluxDB.svg"
+    },
+    {
+        name: "Inkscape ",
+        filename: "Inkscape-.svg"
+    },
+    {
+        name: "Insomnia",
+        filename: "Insomnia.svg"
+    },
+    {
+        name: "Intellij Idea",
+        filename: "IntelliJ-IDEA.svg"
+    },
+    {
+        name: "Internet Explorer 10 (ie10)",
+        filename: "Internet-Explorer-10-(ie10).svg"
+    },
+    {
+        name: "Ionic",
+        filename: "Ionic.svg"
+    },
+    {
+        name: "Jaeger Tracing",
+        filename: "Jaeger-Tracing.svg"
+    },
+    {
+        name: "Jamstack",
+        filename: "Jamstack.svg"
+    },
+    {
+        name: "Jasmine",
+        filename: "Jasmine.svg"
+    },
+    {
+        name: "Java",
+        filename: "Java.svg"
+    },
+    {
+        name: "Javascript",
+        filename: "JavaScript.svg"
+    },
+    {
+        name: "Jeet",
+        filename: "Jeet.svg"
+    },
+    {
+        name: "Jekyll",
+        filename: "Jekyll.svg"
+    },
+    {
+        name: "Jenkins",
+        filename: "Jenkins.svg"
+    },
+    {
+        name: "Jest",
+        filename: "Jest.svg"
+    },
+    {
+        name: "Jetbrains",
+        filename: "JetBrains.svg"
+    },
+    {
+        name: "Jira Align",
+        filename: "Jira-Align.svg"
+    },
+    {
+        name: "Jira",
+        filename: "Jira.svg"
+    },
+    {
+        name: "Jquery",
+        filename: "jQuery.svg"
+    },
+    {
+        name: "Json",
+        filename: "JSON.svg"
+    },
+    {
+        name: "Jule",
+        filename: "Jule.svg"
+    },
+    {
+        name: "Julia",
+        filename: "Julia.svg"
+    },
+    {
+        name: "Junit",
+        filename: "JUnit.svg"
+    },
+    {
+        name: "Jupyter",
+        filename: "Jupyter.svg"
+    },
+    {
+        name: "K3os",
+        filename: "K3OS.svg"
+    },
+    {
+        name: "K3s",
+        filename: "K3s.svg"
+    },
+    {
+        name: "Kaggle",
+        filename: "Kaggle.svg"
+    },
+    {
+        name: "Karate Labs",
+        filename: "Karate-Labs.svg"
+    },
+    {
+        name: "Karma",
+        filename: "Karma.svg"
+    },
+    {
+        name: "Keras",
+        filename: "Keras.svg"
+    },
+    {
+        name: "Kibana",
+        filename: "Kibana.svg"
+    },
+    {
+        name: "Knex.js",
+        filename: "Knex.js.svg"
+    },
+    {
+        name: "Knockout",
+        filename: "Knockout.svg"
+    },
+    {
+        name: "Kotlin",
+        filename: "Kotlin.svg"
+    },
+    {
+        name: "Krakenjs",
+        filename: "Krakenjs.svg"
+    },
+    {
+        name: "Ktor",
+        filename: "Ktor.svg"
+    },
+    {
+        name: "Kubernetes",
+        filename: "Kubernetes.svg"
+    },
+    {
+        name: "Labview",
+        filename: "LabVIEW.svg"
+    },
+    {
+        name: "Laravel",
+        filename: "Laravel.svg"
+    },
+    {
+        name: "Latex",
+        filename: "LaTeX.svg"
+    },
+    {
+        name: "Less.js",
+        filename: "Less.js.svg"
+    },
+    {
+        name: "Linkedin",
+        filename: "LinkedIn.svg"
+    },
+    {
+        name: "Linux",
+        filename: "Linux.svg"
+    },
+    {
+        name: "Liquibase",
+        filename: "Liquibase.svg"
+    },
+    {
+        name: "Livewire",
+        filename: "Livewire.svg"
+    },
+    {
+        name: "Llvm",
+        filename: "LLVM.svg"
+    },
+    {
+        name: "Logstash",
+        filename: "Logstash.svg"
+    },
+    {
+        name: "Lua",
+        filename: "Lua.svg"
+    },
+    {
+        name: "Lumen",
+        filename: "Lumen.svg"
+    },
+    {
+        name: "Markdown",
+        filename: "Markdown.svg"
+    },
+    {
+        name: "Material Ui",
+        filename: "Material-UI.svg"
+    },
+    {
+        name: "Materialize",
+        filename: "Materialize.svg"
+    },
+    {
+        name: "Matlab",
+        filename: "MATLAB.svg"
+    },
+    {
+        name: "Matplotlib",
+        filename: "Matplotlib.svg"
+    },
+    {
+        name: "Meteor.js",
+        filename: "Meteor.js.svg"
+    },
+    {
+        name: "Microsoft Sql Server",
+        filename: "Microsoft-SQL-Server.svg"
+    },
+    {
+        name: "Minitab",
+        filename: "Minitab.svg"
+    },
+    {
+        name: "Mobx",
+        filename: "MobX.svg"
+    },
+    {
+        name: "Mocha",
+        filename: "Mocha.svg"
+    },
+    {
+        name: "Modx",
+        filename: "MODX.svg"
+    },
+    {
+        name: "Moleculer",
+        filename: "Moleculer.svg"
+    },
+    {
+        name: "Mongodb",
+        filename: "MongoDB.svg"
+    },
+    {
+        name: "Mongoose.js",
+        filename: "Mongoose.js.svg"
+    },
+    {
+        name: "Moodle",
+        filename: "Moodle.svg"
+    },
+    {
+        name: "Ms Dos",
+        filename: "MS-DOS.svg"
+    },
+    {
+        name: "Mysql",
+        filename: "MySQL.svg"
+    },
+    {
+        name: "Nano",
+        filename: "Nano.svg"
+    },
+    {
+        name: "Nerog",
+        filename: "Nerog.svg"
+    },
+    {
+        name: "Nest.js",
+        filename: "Nest.js.svg"
+    },
+    {
+        name: "Networkx",
+        filename: "NetworkX.svg"
+    },
+    {
+        name: "New4j",
+        filename: "New4j.svg"
+    },
+    {
+        name: "Next.js",
+        filename: "Next.js.svg"
+    },
+    {
+        name: "Nginx",
+        filename: "NGINX.svg"
+    },
+    {
+        name: "Nhibernate",
+        filename: "NHibernate.svg"
+    },
+    {
+        name: "Nim",
+        filename: "Nim.svg"
+    },
+    {
+        name: "Nimble",
+        filename: "Nimble.svg"
+    },
+    {
+        name: "Nixos",
+        filename: "NixOS.svg"
+    },
+    {
+        name: "Node.js",
+        filename: "Node.js.svg"
+    },
+    {
+        name: "Nodemon",
+        filename: "Nodemon.svg"
+    },
+    {
+        name: "Npm",
+        filename: "NPM.svg"
+    },
+    {
+        name: "Nuget",
+        filename: "NuGet.svg"
+    },
+    {
+        name: "Numpy",
+        filename: "NumPy.svg"
+    },
+    {
+        name: "Nuxt Js",
+        filename: "Nuxt-JS.svg"
+    },
+    {
+        name: "Nw.js (node Webkit)",
+        filename: "NW.js-(node-webkit).svg"
+    },
+    {
+        name: "Objective C",
+        filename: "Objective-C.svg"
+    },
+    {
+        name: "Ocaml",
+        filename: "OCaml.svg"
+    },
+    {
+        name: "Oh My Zsh",
+        filename: "Oh-my-zsh.svg"
+    },
+    {
+        name: "Okta",
+        filename: "Okta.svg"
+    },
+    {
+        name: "Openal",
+        filename: "OpenAL.svg"
+    },
+    {
+        name: "Openapi",
+        filename: "OpenAPI.svg"
+    },
+    {
+        name: "Opencl",
+        filename: "OpenCL.svg"
+    },
+    {
+        name: "Opencv",
+        filename: "OpenCV.svg"
+    },
+    {
+        name: "Opengl",
+        filename: "OpenGL.svg"
+    },
+    {
+        name: "Openstack",
+        filename: "OpenStack.svg"
+    },
+    {
+        name: "Opensuse",
+        filename: "openSUSE.svg"
+    },
+    {
+        name: "Opentelemetry",
+        filename: "OpenTelemetry.svg"
+    },
+    {
+        name: "Opera",
+        filename: "Opera.svg"
+    },
+    {
+        name: "Oracle",
+        filename: "Oracle.svg"
+    },
+    {
+        name: "P5 Js",
+        filename: "p5-JS.svg"
+    },
+    {
+        name: "Packer",
+        filename: "Packer.svg"
+    },
+    {
+        name: "Pandas",
+        filename: "Pandas.svg"
+    },
+    {
+        name: "Perl",
+        filename: "Perl.svg"
+    },
+    {
+        name: "Pfsense",
+        filename: "pfSense.svg"
+    },
+    {
+        name: "Phalcon",
+        filename: "Phalcon.svg"
+    },
+    {
+        name: "Phoenix Framework",
+        filename: "Phoenix-Framework.svg"
+    },
+    {
+        name: "Photon Engine ",
+        filename: "Photon-Engine-.svg"
+    },
+    {
+        name: "Php",
+        filename: "PHP.svg"
+    },
+    {
+        name: "Phpstorm",
+        filename: "PhpStorm.svg"
+    },
+    {
+        name: "Playwrite",
+        filename: "Playwrite.svg"
+    },
+    {
+        name: "Ploty",
+        filename: "Ploty.svg"
+    },
+    {
+        name: "Podman",
+        filename: "Podman.svg"
+    },
+    {
+        name: "Polygon",
+        filename: "Polygon.svg"
+    },
+    {
+        name: "Portainer",
+        filename: "Portainer.svg"
+    },
+    {
+        name: "Postcss",
+        filename: "PostCSS.svg"
+    },
+    {
+        name: "Postgressql",
+        filename: "PostgresSQL.svg"
+    },
+    {
+        name: "Postman",
+        filename: "Postman.svg"
+    },
+    {
+        name: "Powershell",
+        filename: "Powershell.svg"
+    },
+    {
+        name: "Processing",
+        filename: "Processing.svg"
+    },
+    {
+        name: "Prometheus",
+        filename: "Prometheus.svg"
+    },
+    {
+        name: "Protractor Test",
+        filename: "Protractor-Test.svg"
+    },
+    {
+        name: "Purescript",
+        filename: "PureScript.svg"
+    },
+    {
+        name: "Putty",
+        filename: "PuTTY.svg"
+    },
+    {
+        name: "Pycharm",
+        filename: "PyCharm.svg"
+    },
+    {
+        name: "Pyscript",
+        filename: "PyScript.svg"
+    },
+    {
+        name: "Pytest",
+        filename: "pytest.svg"
+    },
+    {
+        name: "Python Poetry",
+        filename: "Python-Poetry.svg"
+    },
+    {
+        name: "Python",
+        filename: "Python.svg"
+    },
+    {
+        name: "Pytorch",
+        filename: "PyTorch.svg"
+    },
+    {
+        name: "Qodana",
+        filename: "Qodana.svg"
+    },
+    {
+        name: "Qt Framework",
+        filename: "Qt-Framework.svg"
+    },
+    {
+        name: "Quarkus",
+        filename: "Quarkus.svg"
+    },
+    {
+        name: "Quasar",
+        filename: "Quasar.svg"
+    },
+    {
+        name: "Qwik",
+        filename: "Qwik.svg"
+    },
+    {
+        name: "R ",
+        filename: "R-.svg"
+    },
+    {
+        name: "Rabbitmq",
+        filename: "RabbitMQ.svg"
+    },
+    {
+        name: "Rancher",
+        filename: "Rancher.svg"
+    },
+    {
+        name: "Raspberry Pi",
+        filename: "Raspberry-Pi.svg"
+    },
+    {
+        name: "Reach",
+        filename: "Reach.svg"
+    },
+    {
+        name: "React Bootstrap",
+        filename: "React-Bootstrap.svg"
+    },
+    {
+        name: "React",
+        filename: "React.svg"
+    },
+    {
+        name: "Realm",
+        filename: "Realm.svg"
+    },
+    {
+        name: "Red Hat",
+        filename: "Red-Hat.svg"
+    },
+    {
+        name: "Redcube's Epic Compiler Thingy Programming (rect)",
+        filename: "RedCube's-epic-Compiler-Thingy-programming-(ReCT).svg"
+    },
+    {
+        name: "Redis",
+        filename: "Redis.svg"
+    },
+    {
+        name: "Redux",
+        filename: "Redux.svg"
+    },
+    {
+        name: "Ren'py",
+        filename: "Ren'Py.svg"
+    },
+    {
+        name: "Rider",
+        filename: "Rider.svg"
+    },
+    {
+        name: "Robot Operating System (ros)",
+        filename: "Robot-Operating-System-(ROS).svg"
+    },
+    {
+        name: "Rocksdb",
+        filename: "RocksDB.svg"
+    },
+    {
+        name: "Rollup.js",
+        filename: "Rollup.js.svg"
+    },
+    {
+        name: "Rspec",
+        filename: "RSpec.svg"
+    },
+    {
+        name: "Rstudio",
+        filename: "RStudio.svg"
+    },
+    {
+        name: "Ruby On Rails",
+        filename: "Ruby-on-Rails.svg"
+    },
+    {
+        name: "Ruby",
+        filename: "Ruby.svg"
+    },
+    {
+        name: "Rubymine",
+        filename: "RubyMine.svg"
+    },
+    {
+        name: "Rust",
+        filename: "Rust.svg"
+    },
+    {
+        name: "Salesforce",
+        filename: "Salesforce.svg"
+    },
+    {
+        name: "Sanity",
+        filename: "Sanity.svg"
+    },
+    {
+        name: "Sass",
+        filename: "Sass.svg"
+    },
+    {
+        name: "Scala",
+        filename: "Scala.svg"
+    },
+    {
+        name: "Scalingo",
+        filename: "Scalingo.svg"
+    },
+    {
+        name: "Selenium",
+        filename: "Selenium.svg"
+    },
+    {
+        name: "Sema Software",
+        filename: "Sema-Software.svg"
+    },
+    {
+        name: "Sequelize",
+        filename: "Sequelize.svg"
+    },
+    {
+        name: "Shopware",
+        filename: "Shopware.svg"
+    },
+    {
+        name: "Simple Directmedia Layer (sdl)",
+        filename: "Simple-DirectMedia-Layer-(SDL).svg"
+    },
+    {
+        name: "Sketch",
+        filename: "Sketch.svg"
+    },
+    {
+        name: "Slack",
+        filename: "Slack.svg"
+    },
+    {
+        name: "Socket.io",
+        filename: "Socket.io.svg"
+    },
+    {
+        name: "Solid.js",
+        filename: "Solid.js.svg"
+    },
+    {
+        name: "Solidity",
+        filename: "Solidity.svg"
+    },
+    {
+        name: "Sonarqube",
+        filename: "SonarQube.svg"
+    },
+    {
+        name: "Sourcetree",
+        filename: "Sourcetree.svg"
+    },
+    {
+        name: "Splunk",
+        filename: "Splunk.svg"
+    },
+    {
+        name: "Spring",
+        filename: "Spring.svg"
+    },
+    {
+        name: "Sql Developer",
+        filename: "SQL-Developer.svg"
+    },
+    {
+        name: "Sqlalchemy",
+        filename: "SQLAlchemy.svg"
+    },
+    {
+        name: "Sqlite",
+        filename: "SQLite.svg"
+    },
+    {
+        name: "Ssh",
+        filename: "SSH.svg"
+    },
+    {
+        name: "Stack Overflow",
+        filename: "Stack-Overflow.svg"
+    },
+    {
+        name: "Stata",
+        filename: "Stata.svg"
+    },
+    {
+        name: "Storybook",
+        filename: "Storybook.svg"
+    },
+    {
+        name: "Streamlit",
+        filename: "Streamlit.svg"
+    },
+    {
+        name: "Stylus",
+        filename: "Stylus.svg"
+    },
+    {
+        name: "Svelte",
+        filename: "Svelte.svg"
+    },
+    {
+        name: "Swagger",
+        filename: "Swagger.svg"
+    },
+    {
+        name: "Swift",
+        filename: "Swift.svg"
+    },
+    {
+        name: "Symfony",
+        filename: "Symfony.svg"
+    },
+    {
+        name: "Tailwind Css",
+        filename: "Tailwind-CSS.svg"
+    },
+    {
+        name: "Tauri",
+        filename: "Tauri.svg"
+    },
+    {
+        name: "Tensorflow",
+        filename: "TensorFlow.svg"
+    },
+    {
+        name: "Tex",
+        filename: "TeX.svg"
+    },
+    {
+        name: "The Algorithms",
+        filename: "The-Algorithms.svg"
+    },
+    {
+        name: "Three.js",
+        filename: "Three.js.svg"
+    },
+    {
+        name: "Titanium Sdk",
+        filename: "Titanium-SDK.svg"
+    },
+    {
+        name: "Tortoisegit",
+        filename: "TortoiseGit.svg"
+    },
+    {
+        name: "Tower",
+        filename: "Tower.svg"
+    },
+    {
+        name: "Traefik Mesh",
+        filename: "Traefik-Mesh.svg"
+    },
+    {
+        name: "Traefik Proxy",
+        filename: "Traefik-Proxy.svg"
+    },
+    {
+        name: "Travis Ci",
+        filename: "Travis-CI.svg"
+    },
+    {
+        name: "Trello",
+        filename: "Trello.svg"
+    },
+    {
+        name: "Twitter",
+        filename: "Twitter.svg"
+    },
+    {
+        name: "Typescript",
+        filename: "TypeScript.svg"
+    },
+    {
+        name: "Typo3",
+        filename: "TYPO3.svg"
+    },
+    {
+        name: "Ubuntu",
+        filename: "Ubuntu.svg"
+    },
+    {
+        name: "Unified Modelling Language (uml)",
+        filename: "Unified-Modelling-Language-(UML).svg"
+    },
+    {
+        name: "Unity",
+        filename: "Unity.svg"
+    },
+    {
+        name: "Unix",
+        filename: "UNIX.svg"
+    },
+    {
+        name: "Unreal Engine",
+        filename: "Unreal-Engine.svg"
+    },
+    {
+        name: "Uwsgi",
+        filename: "uWSGI.svg"
+    },
+    {
+        name: "V8",
+        filename: "V8.svg"
+    },
+    {
+        name: "Vala",
+        filename: "Vala.svg"
+    },
+    {
+        name: "Vercel",
+        filename: "Vercel.svg"
+    },
+    {
+        name: "Veutify",
+        filename: "Veutify.svg"
+    },
+    {
+        name: "Vim",
+        filename: "Vim.svg"
+    },
+    {
+        name: "Visual Studio Code (vs Code)",
+        filename: "Visual-Studio-Code-(VS-Code).svg"
+    },
+    {
+        name: "Visual Studio",
+        filename: "Visual-Studio.svg"
+    },
+    {
+        name: "Vite.js",
+        filename: "Vite.js.svg"
+    },
+    {
+        name: "Vite",
+        filename: "Vite.svg"
+    },
+    {
+        name: "Vsphere",
+        filename: "vSphere.svg"
+    },
+    {
+        name: "Vue Storefront",
+        filename: "Vue-Storefront.svg"
+    },
+    {
+        name: "Vue.js",
+        filename: "Vue.js.svg"
+    },
+    {
+        name: "Vyper",
+        filename: "Vyper.svg"
+    },
+    {
+        name: "Webassembly",
+        filename: "WebAssembly.svg"
+    },
+    {
+        name: "Webflow",
+        filename: "Webflow.svg"
+    },
+    {
+        name: "Weblate",
+        filename: "Weblate.svg"
+    },
+    {
+        name: "Webpack",
+        filename: "Webpack.svg"
+    },
+    {
+        name: "Webstorm",
+        filename: "WebStorm.svg"
+    },
+    {
+        name: "Windows 11",
+        filename: "Windows-11.svg"
+    },
+    {
+        name: "Windows 8",
+        filename: "Windows-8.svg"
+    },
+    {
+        name: "Woocommerce",
+        filename: "WooCommerce.svg"
+    },
+    {
+        name: "Wordpress",
+        filename: "WordPress.svg"
+    },
+    {
+        name: "Xamarin",
+        filename: "Xamarin.svg"
+    },
+    {
+        name: "Xcode",
+        filename: "Xcode.svg"
+    },
+    {
+        name: "Xml",
+        filename: "XML.svg"
+    },
+    {
+        name: "Yaml",
+        filename: "YAML.svg"
+    },
+    {
+        name: "Yarn",
+        filename: "Yarn.svg"
+    },
+    {
+        name: "Yii Framework",
+        filename: "Yii-Framework.svg"
+    },
+    {
+        name: "Yuno Host",
+        filename: "Yuno-Host.svg"
+    },
+    {
+        name: "Zend Framework",
+        filename: "Zend-Framework.svg"
+    },
+    {
+        name: "Zig",
+        filename: "Zig.svg"
+    }
+];
+
+        // Sort icons alphabetically
+        icons.sort((a, b) => a.name.localeCompare(b.name));
+
+        const container = document.getElementById('icons-container');
+        const searchInput = document.getElementById('search');
+        
+        // Function to display icons
+        function displayIcons(iconsToShow) {
+            container.innerHTML = '';
+            
+            iconsToShow.forEach(icon => {
+                const card = document.createElement('a');
+                card.href = `#`;
+                card.className = 'icon-card';
+                card.download = icon.filename;
+                card.title = `Download ${icon.name}`;
+                
+                card.innerHTML = `
+                    <div class="icon">
+                        <img src="${icon.filename}" alt="${icon.name}">
+                    </div>
+                    <div class="icon-name">${icon.name}</div>
+                    <div class="icon-filename">${icon.filename}</div>
+                `;
+                
+                // Add click handler to download the icon
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const link = document.createElement('a');
+                    link.href = icon.filename;
+                    link.download = icon.filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+                
+                container.appendChild(card);
+            });
+        }
+        
+        // Initial display of all icons
+        displayIcons(icons);
+        
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredIcons = icons.filter(icon => 
+                icon.name.toLowerCase().includes(searchTerm) || 
+                icon.filename.toLowerCase().includes(searchTerm)
+            );
+            displayIcons(filteredIcons);
+        });
+        
+        // Add keyboard shortcut to focus search (Cmd+K or Ctrl+K)
+        document.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
+    </script>
+</body>
+</html>

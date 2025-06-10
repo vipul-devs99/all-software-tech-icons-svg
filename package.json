@@ -1,0 +1,33 @@
+{
+  "name": "tech-icons-collection",
+  "version": "1.0.0",
+  "description": "A comprehensive collection of SVG icons for various software technologies and frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "optimize": "svgo -f . -r --multipass",
+    "format": "prettier --write \"**/*.{js,json,md,svg}\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/tech-icons.git"
+  },
+  "keywords": [
+    "icons",
+    "svg",
+    "tech",
+    "technology",
+    "framework",
+    "programming"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/tech-icons/issues"
+  },
+  "homepage": "https://github.com/yourusername/tech-icons#readme",
+  "devDependencies": {
+    "prettier": "^2.8.0",
+    "svgo": "^3.0.2"
+  }
+}

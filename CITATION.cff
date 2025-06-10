@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Tech Icons Collection"
+authors:
+  - family-names: "YourName"
+    given-names: "Your"
+    orcid: "https://orcid.org/YOUR-ORCID-ID"
+version: 1.0.0
+date-released: 2025-06-10
+url: "https://github.com/yourusername/tech-icons"
+repository-code: "https://github.com/yourusername/tech-icons"
+license: MIT
+abstract: "A comprehensive collection of high-quality SVG icons for various software technologies, frameworks, and tools."

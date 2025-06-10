@@ -1,0 +1,32 @@
+{
+  "projectName": "tech-icons",
+  "projectOwner": "yourusername",
+  "repoType": "github.com",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "yourusername",
+      "name": "Your Name",
+      "avatar_url": "https://avatars.githubusercontent.com/u/YOUR-USER-ID",
+      "profile": "https://github.com/yourusername",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "maintenance",
+        "projectManagement"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "commitType": "docs",
+  "badgeTemplate": "<a href="#contributors" target="_blank"><img src="https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square" alt="All Contributors" /></a>",
+  "contributorTemplate": "<a href="<%= contributor.profile %>"><img src="<%= contributor.avatar_url %>" width="<%= options.imageSize %>px;" alt=""/><br /><sub><b><%= contributor.name || contributor.login %></b></sub></a><br /><%= contributions(contributor.contributions) %>"
+}
